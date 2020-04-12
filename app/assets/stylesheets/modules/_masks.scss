@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+.header {
+  background-color: black;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  &__title {
+    display: flex;
+    text-decoration: none;
+    &__image {
+    }
+    &__text {
+      width: 300px;
+      line-height: 100px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 45px;
+      font-family: "YuGothic";
+    }
+  }
+  &__right {
+      width: 100%;
+    &__user {
+      height: 50px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      &--new {
+        color: white;
+        width: 100px;
+        line-height: 50px;
+        font-size: 16px;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+      &--login {
+        color: white;
+        width: 100px;
+        line-height: 50px;
+        font-size: 16px;
+        text-decoration: none;
+        margin-right: 20px;
+      }
+    }
+    &__menu {
+      height: 50px;
+      width: 100%;
+      background-color: rgb(30, 30, 30);
+      display: flex;
+      &--collection {
+        color: white;
+        width: 33.3%;
+        line-height: 50px;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      &--donationlogs {
+        color: white;
+        width: 33.3%;
+        line-height: 50px;
+        font-size: 16px;
+        text-decoration: none;
+      }
+      &--aboutus {
+        color: white;
+        width: 33.3%;
+        line-height: 50px;
+        font-size: 16px;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.info{
+  height: 100vh;
+  width: 100%;
+  background-image: url("Tiger2.png");
+  background-size: cover;
+  background-color:rgba(255,255,255,0.1);
+  background-blend-mode:lighten;
+  &--message {
+    height: 500px;
+    width: 90%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    color: white;
+    font-size: 70px;
+    font-weight: bold;
+    text-align: center;
+    &-top {
+      margin-top: 100px;
+    }
+    &-middle {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+    &-bottom {
+
+    }
+  }
+}

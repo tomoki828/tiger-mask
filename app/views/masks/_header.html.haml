@@ -1,0 +1,17 @@
+.header
+  =link_to root_path, class: "header__title" do
+    = image_tag "TigerMask_icon.png", size: "100x100", alt: "TigerMask", class: "header__title__image"
+    %p.header__title__text Tiger Mask
+  .header__right
+    .header__right__user
+      = link_to "#", class: "header__right__user--new" do
+        %p 登録
+      = link_to "#", class: "header__right__user--login" do
+        %p ログイン
+    .header__right__menu
+      = link_to "#", class: "header__right__menu--collection" do
+        %p PRODUCTS
+      = link_to "#", class: "header__right__menu--donationlogs" do
+        %p DONATION LOGS
+      = link_to "#", class: "header__right__menu--aboutus" do
+        %p ABOUT US
