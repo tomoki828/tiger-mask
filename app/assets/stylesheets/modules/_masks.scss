@@ -55,23 +55,35 @@
       width: 100%;
       background-color: rgb(30, 30, 30);
       display: flex;
-      &--collection {
-        color: white;
-        width: 33.3%;
+      position: relative;
+      &__list {
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
-        text-decoration: none;
+        display: block;
       }
+      &__list:hover {
+        color: #fff;
+        background: #fb4343;
+      }
+      &__list > a {
+        color: white;
+        text-decoration: none;
+        transition: .3s;
+      }
+
+
+
       &--donationlogs {
         color: white;
-        width: 33.3%;
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
       }
       &--aboutus {
         color: white;
-        width: 33.3%;
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;

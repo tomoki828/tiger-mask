@@ -8,9 +8,22 @@
         %p 登録
       = link_to "#", class: "header__right__user--login" do
         %p ログイン
-    .header__right__menu
-      = link_to "#", class: "header__right__menu--collection" do
-        %p PRODUCTS
+    .header__right__menu#menu
+      %li.header__right__menu__list
+        = link_to "#" do
+          %p PRODUCTS
+        .header__right__menu__list__contents
+          %ul
+            %li
+              = link_to "#" do
+                %p コンテンツ1
+            %li
+              = link_to "#" do
+                %p コンテンツ1
+            %li
+              = link_to "#" do
+                %p コンテンツ1
+
       = link_to "#", class: "header__right__menu--donationlogs" do
         %p DONATION LOGS
       = link_to "#", class: "header__right__menu--aboutus" do
