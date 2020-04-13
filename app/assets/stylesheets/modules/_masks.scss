@@ -14,6 +14,7 @@
   &__title {
     display: flex;
     text-decoration: none;
+    z-index: 2;
     &__image {
     }
     &__text {
@@ -21,6 +22,7 @@
       line-height: 100px;
       text-align: center;
       color: white;
+      background-color: black;
       font-weight: bold;
       font-size: 45px;
       font-family: "YuGothic";
@@ -54,24 +56,48 @@
       height: 50px;
       width: 100%;
       background-color: rgb(30, 30, 30);
+      padding-left: 400px;
       display: flex;
       position: relative;
+      position: absolute;
+      left: 0;
       &__list {
         width: 33.33%;
         line-height: 50px;
         font-size: 16px;
         display: block;
-      }
-      &__list:hover {
-        color: #fff;
-        background: #fb4343;
+        &__contents {
+          background-color: rgb(235,235,235);
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          box-shadow: 0 3px 3px 0 rgba(0,0,0,.5);
+        }
+        &__contents ul {
+          width: 100%;
+        }
+        &__contents li {
+          display: inline;
+        }
+        &__contents li a {
+          text-decoration: none;
+        }
+        &__contents li a p {
+          color: black;
+          width: 24.7%;
+          display: inline-block;
+        }
       }
       &__list > a {
         color: white;
         text-decoration: none;
         transition: .3s;
       }
-
+      &__list:hover {
+        text-decoration: underline;
+      }
 
 
       &--donationlogs {

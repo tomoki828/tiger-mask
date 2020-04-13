@@ -10,20 +10,22 @@
         %p ログイン
     .header__right__menu#menu
       %li.header__right__menu__list
-        = link_to "#" do
+        = link_to "#", class: "header__right__menu--products" do
           %p PRODUCTS
         .header__right__menu__list__contents
           %ul
             %li
-              = link_to "#" do
-                %p コンテンツ1
+              = link_to "#", class: "header__right__menu__list__contents--tiger" do
+                %p Tiger
             %li
-              = link_to "#" do
-                %p コンテンツ1
+              = link_to "#", class: "header__right__menu__list__contents--lion" do
+                %p Lion
             %li
-              = link_to "#" do
-                %p コンテンツ1
-
+              = link_to "#", class: "header__right__menu__list__contents--cheetah" do
+                %p Cheetah
+            %li
+              = link_to "#", class: "header__right__menu__list__contents--Cat" do
+                %p Cat
       = link_to "#", class: "header__right__menu--donationlogs" do
         %p DONATION LOGS
       = link_to "#", class: "header__right__menu--aboutus" do
