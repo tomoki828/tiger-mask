@@ -14,6 +14,7 @@
   &__title {
     display: flex;
     text-decoration: none;
+    z-index: 2;
     &__image {
     }
     &__text {
@@ -21,6 +22,7 @@
       line-height: 100px;
       text-align: center;
       color: white;
+      background-color: black;
       font-weight: bold;
       font-size: 45px;
       font-family: "YuGothic";
@@ -54,24 +56,75 @@
       height: 50px;
       width: 100%;
       background-color: rgb(30, 30, 30);
+      padding-left: 400px;
       display: flex;
-      &--collection {
-        color: white;
-        width: 33.3%;
+      position: relative;
+      position: absolute;
+      left: 0;
+      &__list {
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
-        text-decoration: none;
+        display: block;
+        &__contents {
+          height: 170px;
+          background-color: rgb(235,235,235);
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          width: 100%;
+          box-shadow: 0 3px 3px 0 rgba(0,0,0,.5);
+          &__product {
+            width: 200px;
+            margin: 10px 0;
+            &__image {
+              margin-left: 50px;
+              display: block;
+            }
+          }
+          &__product:hover {
+            opacity: 0.5;
+            border-bottom: 2px solid;
+            box-sizing: border-box;
+          }
+        }
+        &__contents ul {
+          width: 100%;
+          display: flex;
+          justify-content: space-evenly;
+        }
+        &__contents li {
+          display: inline;
+        }
+        &__contents li a {
+          text-decoration: none;
+        }
+        &__contents li a p {
+          color: black;
+          display: inline-block;
+        }
       }
+      &__list > a {
+        color: white;
+        text-decoration: none;
+        transition: .3s;
+      }
+      &__list:hover {
+        text-decoration: underline;
+      }
+
+
       &--donationlogs {
         color: white;
-        width: 33.3%;
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
       }
       &--aboutus {
         color: white;
-        width: 33.3%;
+        width: 33.33%;
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
