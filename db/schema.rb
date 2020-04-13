@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413061546) do
+ActiveRecord::Schema.define(version: 20200413095229) do
 
   create_table "masks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20200413061546) do
     t.integer  "stock"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "price"
+    t.text     "detail",     limit: 65535
   end
 
 end
