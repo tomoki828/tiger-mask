@@ -78,6 +78,7 @@
           &__product {
             width: 200px;
             margin: 10px 0;
+            display: block;
             &__image {
               margin-left: 50px;
               display: block;
@@ -85,7 +86,7 @@
           }
           &__product:hover {
             opacity: 0.5;
-            border-bottom: 2px solid;
+            border-bottom: 2px solid black;
             box-sizing: border-box;
           }
         }

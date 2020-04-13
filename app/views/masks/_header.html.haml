@@ -15,25 +15,21 @@
         .header__right__menu__list__contents
           %ul
             %li
-              .header__right__menu__list__contents__product
+              = link_to mask_path(@tiger.id), class: "header__right__menu__list__contents__product" do
                 = image_tag "Mask1.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
-                = link_to "#", class: "header__right__menu__list__contents__product--tiger" do
-                  %p Tiger
+                %p #{@tiger.name}
             %li
-              .header__right__menu__list__contents__product
+              = link_to mask_path(@lion.id), class: "header__right__menu__list__contents__product" do
                 = image_tag "Mask2.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
-                = link_to "#", class: "header__right__menu__list__contents__product--lion" do
-                  %p Lion
+                %p #{@lion.name}
             %li
-              .header__right__menu__list__contents__product
+              = link_to mask_path(@cheetah.id), class: "header__right__menu__list__contents__product" do
                 = image_tag "Mask3.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
-                = link_to "#", class: "header__right__menu__list__contents__product--cheetah" do
-                  %p Cheetah
+                %p #{@cheetah.name}
             %li
-              .header__right__menu__list__contents__product
+              = link_to mask_path(@cat.id), class: "header__right__menu__list__contents__product" do
                 = image_tag "Mask4.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
-                = link_to "#", class: "header__right__menu__list__contents__product--cat" do
-                  %p Cat
+                %p #{@cat.name}
       = link_to "#", class: "header__right__menu--donationlogs" do
         %p DONATION LOGS
       = link_to "#", class: "header__right__menu--aboutus" do
