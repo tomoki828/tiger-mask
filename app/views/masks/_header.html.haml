@@ -15,17 +15,25 @@
         .header__right__menu__list__contents
           %ul
             %li
-              = link_to "#", class: "header__right__menu__list__contents--tiger" do
-                %p Tiger
+              .header__right__menu__list__contents__product
+                = image_tag "Mask1.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
+                = link_to "#", class: "header__right__menu__list__contents__product--tiger" do
+                  %p Tiger
             %li
-              = link_to "#", class: "header__right__menu__list__contents--lion" do
-                %p Lion
+              .header__right__menu__list__contents__product
+                = image_tag "Mask2.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
+                = link_to "#", class: "header__right__menu__list__contents__product--lion" do
+                  %p Lion
             %li
-              = link_to "#", class: "header__right__menu__list__contents--cheetah" do
-                %p Cheetah
+              .header__right__menu__list__contents__product
+                = image_tag "Mask3.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
+                = link_to "#", class: "header__right__menu__list__contents__product--cheetah" do
+                  %p Cheetah
             %li
-              = link_to "#", class: "header__right__menu__list__contents--Cat" do
-                %p Cat
+              .header__right__menu__list__contents__product
+                = image_tag "Mask4.png", size: "100x100", alt: "TigerMask", class: "header__right__menu__list__contents__product__image"
+                = link_to "#", class: "header__right__menu__list__contents__product--cat" do
+                  %p Cat
       = link_to "#", class: "header__right__menu--donationlogs" do
         %p DONATION LOGS
       = link_to "#", class: "header__right__menu--aboutus" do

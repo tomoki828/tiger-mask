@@ -74,9 +74,23 @@
           left: 0;
           width: 100%;
           box-shadow: 0 3px 3px 0 rgba(0,0,0,.5);
+          &__product {
+            width: 200px;
+            margin: 10px 0;
+            &__image {
+              margin-left: 50px;
+              display: block;
+            }
+          }
+          &__product:hover {
+            opacity: 0.5;
+            border-bottom: solid;
+          }
         }
         &__contents ul {
           width: 100%;
+          display: flex;
+          justify-content: space-evenly;
         }
         &__contents li {
           display: inline;
@@ -86,7 +100,6 @@
         }
         &__contents li a p {
           color: black;
-          width: 24.7%;
           display: inline-block;
         }
       }
