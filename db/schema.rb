@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200413095229) do
+ActiveRecord::Schema.define(version: 20200414045347) do
+
+  create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "quantity",   default: 0
+    t.integer  "mask_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+    t.index ["mask_id"], name: "index_cart_items_on_mask_id", using: :btree
+  end
+
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "masks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -23,4 +38,6 @@ ActiveRecord::Schema.define(version: 20200413095229) do
     t.text     "detail",     limit: 65535
   end
 
+  add_foreign_key "cart_items", "carts"
+  add_foreign_key "cart_items", "masks"
 end

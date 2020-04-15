@@ -1,6 +1,14 @@
+-# 商品の詳細画面。それぞれの商品に「購入数入力欄」と「ボタン」を配置。
+-# 「ボタン」を押すとcarts#add_itemへとPOSTアクションを飛ばし、購入数と商品IDを飛ばしたあと、carts#showへとリダイレクトするようにする。
+
 .mask
   .mask__name #{@mask.name}
   .mask__infomation #{@mask.infomation}
   .mask__price ¥#{@mask.price}
 
   = image_tag @mask.image,size: "300x300", class: 'mask__image'
+
+%form.form{action: add_item_path, method: "post"}
+  %input.form__hidden{type: "hidden", name: "id", value: "#{@mask.id}"}
+  %input.form__number{name: "number", placeholder: "個数", type: "number", value: ""}
+  %input.form__btn{type: "submit", value: "カートに入れる"}
