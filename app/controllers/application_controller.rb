@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
     cart
   end
 
+  def cart_info
+    if params[:id]
+      @cart = Cart.find(params[:id])
+    end
+  end
+
 end
