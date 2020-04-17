@@ -4,6 +4,8 @@
     %p.header__title__text Tiger Mask
   .header__right
     .header__right__user
+      = link_to carts_path, class: "header__right__user--cart" do
+        %i.fas.fa-shopping-cart.fa-lg
       = link_to "#", class: "header__right__user--new" do
         %p 登録
       = link_to "#", class: "header__right__user--login" do
