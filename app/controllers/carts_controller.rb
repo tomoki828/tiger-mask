@@ -4,22 +4,36 @@ class CartsController < ApplicationController
   before_action :setup_cart_item!, only: [:update_item, :delete_item]
 
   def index
+    # ヘッダーに表示に必要なインスタンス変数を定義
     @tiger   = Mask.find_by(id: 1)
     @lion    = Mask.find_by(id: 2)
     @cheetah = Mask.find_by(id: 3)
     @cat     = Mask.find_by(id: 4)
 
-    @products = []
+    @products   = []
+    @products_carts  = []
+
     carts = Cart.all.order("created_at DESC")
+
       carts.each do |cart|
+        # 中間テーブルからquantityの値を取り出し、配列(@quantitys)に代入
+        cart.cart_items.each do |c|
+          products_cart = {}
+          products_cart[:quantity] = c.quantity
+          products_cart[:cart_id] = c.cart_id
+          @products_carts << products_cart
+        end
+
+        # カート情報に合うmasksテーブルのデータを配列(@products)に代入
         mask = cart.masks
-          mask.each do |mask|
-            product = {}
-            product[:name]  = mask[:name]
-            product[:image] = mask[:image]
-            product[:price] = mask[:price]
-            @products << product
-          end
+        mask.each do |m|
+          product = {}
+          product[:name]  = m[:name]
+          product[:image] = m[:image]
+          product[:price] = m[:price]
+          @products << product
+        end
+                
       end
   end
   

@@ -1,5 +1,3 @@
-#{session[:cart_id]}
-
 %form.form{action: update_item_path, method: "post"}
   %input.form__hidden{type: "hidden", name: "id", value: "#{params[:id]}"}
   %input.form__number{name: "number", placeholder: "個数", type: "number", value: ""}

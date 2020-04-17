@@ -4,4 +4,49 @@
 
 .cart__main {
   padding-top: 100px;
+  width: 700px;
+  margin: 0 auto;
+  &--text {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "YuGothic";
+    padding: 20px 0;
+  }
+  &__content {
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: solid 1px gray;
+    padding: 20px 20px;
+    &__left {
+      &--name {
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "YuGothic";
+      }
+    }
+    &__right {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &--form {
+        &-number {
+          height: 30px;
+          width: 60px;
+          text-align: center;
+          margin-left: 30px;
+        }
+        &-btn {
+          margin-left: 30px;
+        }
+      }
+      &--delete {
+        margin-left: 30px;
+      }
+    }
+
+  }
 }
+

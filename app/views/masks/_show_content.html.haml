@@ -4,11 +4,12 @@
 .mask
   .mask__name #{@mask.name}
   .mask__infomation #{@mask.infomation}
-  .mask__price ¥#{@mask.price}
-
+  .mask__detail #{@mask.detail}
   = image_tag @mask.image,size: "300x300", class: 'mask__image'
 
-%form.form{action: add_item_path, method: "post"}
-  %input.form__hidden{type: "hidden", name: "id", value: "#{@mask.id}"}
-  %input.form__number{name: "number", placeholder: "個数", type: "number", value: ""}
-  %input.form__btn{type: "submit", value: "カートに入れる"}
+  .mask__buy
+    .mask__buy__price ¥#{@mask.price}(税別)
+    %form.mask__buy__form{action: add_item_path, method: "post"}
+      %input.mask__buy__form--hidden{type: "hidden", name: "id", value: "#{@mask.id}"}
+      %input.mask__buy__form--number{name: "number", placeholder: "個数", type: "number", value: ""}
+      %input.mask__buy__form--btn{type: "submit", value: "カートへ入れる"}

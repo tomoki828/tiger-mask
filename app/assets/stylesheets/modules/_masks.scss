@@ -176,9 +176,47 @@
 
 .mask {
   padding-top: 100px;
+  width: 90%;
+  margin: 0 auto;
   &__name {
+    text-align: center;
+    padding: 20px 0;
     font-size: 60px;
     font-weight: bold;
     font-family: "YuGothic";
+  }
+  &__infomation {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 40px;
+    font-weight: bold;
+  }
+  &__detail {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 20px;
+  }
+  &__image {
+    display: block;
+    margin: 0 auto 20px;
+  }
+  &__buy {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    &__price {
+      font-size: 20px;
+    }
+    &__form {
+      &--number {
+        height: 30px;
+        width: 60px;
+        text-align: center;
+      }
+      &--btn {
+        margin-left: 5px;
+      }
+    }
   }
 }
