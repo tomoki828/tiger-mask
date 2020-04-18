@@ -1,0 +1,15 @@
+
+.cart__main
+  %p.cart__main--text CART 
+  -@products.zip(@products_carts).each do |product, products_cart|
+    .cart__main__content
+      .cart__main__content__left
+        .cart__main__content__left--name #{product[:name]}
+        = image_tag "#{product[:image]}",size: "100x100", class: '.cart__main__content__right--image'
+      .cart__main__content__right
+        .cart__main__content__right--price ¥#{product[:price]}(税別)
+        %form.cart__main__content__right--form{action: update_item_path, method: "post"}
+          %input.cart__main__content__right--form-hidden{type: "hidden", name: "id", value: "#{products_cart[:cart_id]}"}
+          %input.cart__main__content__right--form-number{name: "number", placeholder: "#{products_cart[:quantity]}", type: "number", value: "#{products_cart[:quantity]}"}
+          %input.cart__main__content__right--form-btn{type: "submit", value: "変更"}
+        = link_to '削除', delete_item_path(id: "#{products_cart[:cart_id]}"),class: 'cart__main__content__right--delete', method: :delete

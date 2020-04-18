@@ -1,0 +1,6 @@
+%form.form{action: update_item_path, method: "post"}
+  %input.form__hidden{type: "hidden", name: "id", value: "#{params[:id]}"}
+  %input.form__number{name: "number", placeholder: "個数", type: "number", value: ""}
+  %input.form__btn{type: "submit", value: "変更"}
+
+= link_to '削除', delete_item_path(id: "#{params[:id]}"), method: :delete
