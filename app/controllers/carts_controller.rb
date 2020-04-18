@@ -50,14 +50,13 @@ class CartsController < ApplicationController
 
     @cart_item.quantity += params[:number].to_i
     @cart_item.save
-    redirect_to root_path
-    # redirect_to cart_path(params[:id])
+    redirect_to carts_path
   end
 
   # カート詳細画面から、「更新」を押した時のアクション
   def update_item
     @cart_item.update(quantity: params[:number].to_i)
-    redirect_to root_path
+    redirect_to carts_path
   end
 
   # カート詳細画面から、「削除」を押した時のアクション
@@ -65,7 +64,7 @@ class CartsController < ApplicationController
     @cart = Cart.find(params[:id])
     @cart_item.destroy
     @cart.destroy
-    redirect_to root_path
+    redirect_to carts_path
   end
 
   private
