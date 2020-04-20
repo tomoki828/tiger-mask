@@ -4,12 +4,6 @@ class CartsController < ApplicationController
   before_action :setup_cart_item!, only: [:update_item, :delete_item]
 
   def index
-    # ヘッダーに表示に必要なインスタンス変数を定義
-    @tiger   = Mask.find_by(id: 1)
-    @lion    = Mask.find_by(id: 2)
-    @cheetah = Mask.find_by(id: 3)
-    @cat     = Mask.find_by(id: 4)
-
     @products   = []
     @products_carts  = []
 

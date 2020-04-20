@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200420054238) do
+ActiveRecord::Schema.define(version: 20200420082856) do
 
   create_table "cart_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "quantity",   default: 0
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20200420054238) do
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   create_table "masks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -5,6 +5,8 @@
   .header__right
     .header__right__user
       - if user_signed_in?
+        = link_to "#", class: "header__right__user--name" do
+          %p #{current_user.email} 様
         = link_to carts_path, class: "header__right__user--cart" do
           %i.fas.fa-shopping-cart.fa-lg
         = link_to destroy_user_session_path, class: "header__right__user--logout", method: :delete do
