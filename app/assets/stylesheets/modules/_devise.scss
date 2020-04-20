@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.devise {
+  padding-top: 50px;
+  width: 500px;
+  margin: 0 auto;
+  &__title {
+    margin: 20px 0;
+    font-size: 30px;
+  }
+  &__main {
+    margin: 0 auto;
+    &__field {
+      font-size: 15px;
+      padding: 40px 40px;
+      border-top: solid 1px gray;
+    }
+    &__actions{
+      padding-left: 40px;
+      &--btn {
+        display: block;
+      }
+    }
+  }
+}

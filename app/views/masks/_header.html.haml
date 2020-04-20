@@ -4,12 +4,18 @@
     %p.header__title__text Tiger Mask
   .header__right
     .header__right__user
-      = link_to carts_path, class: "header__right__user--cart" do
-        %i.fas.fa-shopping-cart.fa-lg
-      = link_to "#", class: "header__right__user--new" do
-        %p 登録
-      = link_to "#", class: "header__right__user--login" do
-        %p ログイン
+      - if user_signed_in?
+        = link_to "#", class: "header__right__user--name" do
+          %p #{current_user.email} 様
+        = link_to carts_path, class: "header__right__user--cart" do
+          %i.fas.fa-shopping-cart.fa-lg
+        = link_to destroy_user_session_path, class: "header__right__user--logout", method: :delete do
+          %p ログアウト
+      - else
+        = link_to new_user_registration_path, class: "header__right__user--new" do
+          %p 登録
+        = link_to new_user_session_path, class: "header__right__user--login" do
+          %p ログイン
     .header__right__menu#menu
       %li.header__right__menu__list
         = link_to "javascript:;", class: "header__right__menu--products" do
