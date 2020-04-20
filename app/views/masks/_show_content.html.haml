@@ -9,10 +9,10 @@
 
   .mask__buy
     .mask__buy__price ¥#{@mask.price}(税別)
-  - if user_signed_in?
-    %form.mask__buy__form{action: add_item_path, method: "post"}
-      %input.mask__buy__form--hidden{type: "hidden", name: "id", value: "#{@mask.id}"}
-      %input.mask__buy__form--number{name: "number", placeholder: "個数", type: "number", value: ""}
-      %input.mask__buy__form--btn{type: "submit", value: "カートへ入れる"}
-  - else
-    .mask__buy__caution 購入にはログインが必要です。
+    - if user_signed_in?
+      %form.mask__buy__form{action: add_item_path, method: "post"}
+        %input.mask__buy__form--hidden{type: "hidden", name: "id", value: "#{@mask.id}"}
+        %input.mask__buy__form--number{name: "number", placeholder: "個数", type: "number", value: ""}
+        %input.mask__buy__form--btn{type: "submit", value: "カートへ入れる"}
+    - else
+      .mask__buy__caution 購入にはログインが必要です。

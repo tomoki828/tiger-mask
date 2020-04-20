@@ -1,41 +1,46 @@
 <%= render "masks/header_mini"%>
 
-<i class="fas fa-user">新規会員登録</i>
+<div class="devise">
+  <div class="devise__title"><i class="fas fa-user">&emsp;新規会員登録</i></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :性別 %><br />
-    <label><%= f.radio_button :gender, "1"%> 男 </label>
-    <label><%= f.radio_button :gender, "2"%> 女</label>
-    <label><%= f.radio_button :gender, "3"%> その他</label>
+    <div class="devise__main">
+      <div class="devise__main__field">
+        <%= f.label :性別 %>&emsp;&emsp;&emsp;&emsp;
+        <label><%= f.radio_button :gender, "1"%> 男性</label>
+        <label><%= f.radio_button :gender, "2"%> 女性</label>
+        <label><%= f.radio_button :gender, "3"%> その他</label>
+      </div>
 
-  <div class="field">
-    <%= f.label :生年月日 %><br />
-    <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)%>
+      <div class="devise__main__field">
+        <%= f.label :生年月日 %>&emsp;&emsp;
+        <%= f.date_select :birth_date, use_month_numbers: true,start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)%>
+      </div>
 
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="devise__main__field">
+        <%= f.label :メールアドレス %> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
+
+      <div class="devise__main__field">
+        <%= f.label :パスワード %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上)</em>
+        <% end %>&emsp;&emsp;
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+
+      <div class="devise__main__field">
+        <%= f.label :パスワード再入力 %> &emsp;&emsp;&emsp;&emsp;&emsp;
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+
+      <div class="devise__main__actions">
+        <%= f.submit "登録", class: "devise__main__actions--btn" %>
+        <%= render "devise/shared/links" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>（<%= @minimum_password_length %> 文字以上）</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "登録" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
