@@ -15,6 +15,7 @@ class CartsController < ApplicationController
           products_cart = {}
           products_cart[:quantity] = c.quantity
           products_cart[:cart_id] = c.cart_id
+          products_cart[:user_id] = c.user_id
           @products_carts << products_cart
         end
 
@@ -31,18 +32,19 @@ class CartsController < ApplicationController
       end
   end
   
-  # 商品一覧画面から、「商品購入」を押した時のアクション
+  # 商品一覧画面から、「カートへ入れる」を押した時のアクション
   def add_item
     if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(mask_id: params[:id])
     end
-
+    binding.pry
     @cart_item.quantity += params[:number].to_i
+    @cart_item.user_id = params[:user_id].to_i
     @cart_item.save
     redirect_to carts_path
   end
 
-  # カート詳細画面から、「更新」を押した時のアクション
+  # カート詳細画面から、「変更」を押した時のアクション
   def update_item
     @cart_item.update(quantity: params[:number].to_i)
     redirect_to carts_path
