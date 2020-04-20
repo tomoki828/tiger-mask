@@ -37,7 +37,6 @@ class CartsController < ApplicationController
     if @cart_item.blank?
       @cart_item = current_cart.cart_items.build(mask_id: params[:id])
     end
-    binding.pry
     @cart_item.quantity += params[:number].to_i
     @cart_item.user_id = params[:user_id].to_i
     @cart_item.save
