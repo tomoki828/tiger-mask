@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "masks#index"
   resources :masks, only: [:show]
   resources :carts, only: [:index, :show]

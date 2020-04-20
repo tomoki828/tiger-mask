@@ -37,11 +37,6 @@ class CartsController < ApplicationController
       end
   end
   
-  def show
-    # cart = Cart.find(params[:id])
-    # @mask = cart.masks
-  end
-
   # 商品一覧画面から、「商品購入」を押した時のアクション
   def add_item
     if @cart_item.blank?

@@ -42,6 +42,13 @@
         font-size: 16px;
         margin-right: 20px;
       }
+      &--logout {
+        color: white;
+        width: 100px;
+        line-height: 50px;
+        font-size: 16px;
+        margin-right: 20px;
+      }
       &--new {
         color: white;
         width: 100px;
@@ -217,6 +224,12 @@
       &--btn {
         margin-left: 5px;
       }
+    }
+    &__caution {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
     }
   }
 }
