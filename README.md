@@ -1,4 +1,4 @@
-<img width="200" alt="TigerMask" src="https://user-images.githubusercontent.com/62415847/81903865-5dbaa900-95fd-11ea-9919-c12cf4f43fa7.png">
+![tiger_mask](https://user-images.githubusercontent.com/62415847/81909331-6a42ff80-9605-11ea-9d4c-b0e4a7427f8f.jpg)
 
 ## アプリ名
 ### Tiger Mask
