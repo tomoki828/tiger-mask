@@ -4,7 +4,7 @@ class CreateCartItems < ActiveRecord::Migration[5.0]
       t.integer :quantity, default: 0
       t.references :mask, foreign_key: true
       t.references :cart, foreign_key: true
-
+      t.integer  :user_id
       t.timestamps
     end
   end
