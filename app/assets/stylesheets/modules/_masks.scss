@@ -37,11 +37,14 @@
       justify-content: flex-end;
       &--name {
         color: white;
-        width: 100px;
+        width: 400px;
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
         margin-right: 20px;
+        & p {
+          text-align: right
+        }
       }
       &--cart {
         color: white;
@@ -306,6 +309,12 @@
       }
       &--btn {
         margin-left: 5px;
+        width: 130px;
+        background-color: rgb(100, 100, 100);
+        border-radius: 5px;
+        color: white;
+        border-style: none;
+        height: 30px;
       }
     }
     &__caution {
