@@ -5,6 +5,7 @@ class CartsController < ApplicationController
 
   def index
     @user_carts  = []
+    @total_price = 0
     carts = Cart.all.order("created_at DESC")
     carts.each do |cart|
       cart.masks.zip(cart.cart_items).each do |m, c|
@@ -15,10 +16,12 @@ class CartsController < ApplicationController
         user_cart[:quantity] = c.quantity
         user_cart[:cart_id] = c.cart_id
         user_cart[:user_id] = c.user_id
+        user_cart[:total_price] = user_cart[:price] * user_cart[:quantity]
         @user_carts << user_cart
+        @total_price += user_cart[:total_price]
       end
     end
-    @user_carts = uniq_merge(@user_carts, [:name, :user_id], [:quantity])
+    # @user_carts = uniq_merge(@user_carts, [:name, :user_id], [:quantity])
   end
 
   # 商品一覧画面から「カートへ入れる」を押した時のアクション
@@ -57,11 +60,11 @@ class CartsController < ApplicationController
     end 
 
     # 重複データを処理するメソッド
-    def uniq_merge(ary, keys = [], values = [])
-      ary.group_by { |i| keys.map { |key| i[key] } }
-         .map { |k, v|
-           v[1..-1].each { |x| values.each { |y| v[0][y] += x[y] } }
-           v[0]
-         }
-    end
+    # def uniq_merge(ary, keys = [], values = [])
+    #   ary.group_by { |i| keys.map { |key| i[key] } }
+    #      .map { |k, v|
+    #        v[1..-1].each { |x| values.each { |y| v[0][y] += x[y] } }
+    #        v[0]
+    #      }
+    # end
 end

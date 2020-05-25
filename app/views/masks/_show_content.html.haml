@@ -8,7 +8,7 @@
   = image_tag @mask.image,size: "300x300", class: 'mask__image'
 
   .mask__buy
-    .mask__buy__price ¥#{@mask.price}(税別)
+    .mask__buy__price ¥#{@mask.price}(税込)
     - if user_signed_in?
       %form.mask__buy__form{action: add_item_path, method: "post"}
         %input.mask__buy__form--hidden{type: "hidden", name: "user_id", value: current_user.id}
