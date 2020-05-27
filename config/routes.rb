@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "masks#index"
   resources :masks, only: [:show]
   resources :carts, only: [:index, :show]
+  resources :users, only: [:index]
+  resources :cards, only: [:new, :create, :show, :destroy]
 
   post '/add_item' => 'carts#add_item'
   post '/update_item' => 'carts#update_item'
