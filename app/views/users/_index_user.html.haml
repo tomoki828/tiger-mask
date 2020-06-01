@@ -5,4 +5,7 @@
   .user__info--address
 
   .user__info--card
-    = render partial: 'cards/new'
+    - if @card == nil
+      = render partial: 'cards/new'
+    - else
+      = render partial: 'cards/show'
