@@ -18,6 +18,11 @@ class CartsController < ApplicationController
         user_cart[:user_id] = c.user_id
         user_cart[:total_price] = user_cart[:price] * user_cart[:quantity]
         @user_carts << user_cart
+      end
+    end
+
+    @user_carts.each do |user_cart|
+      if current_user.id == user_cart[:user_id]
         @total_price += user_cart[:total_price]
       end
     end
