@@ -58,6 +58,7 @@ gem 'devise'
 gem 'pry-rails'
 gem 'font-awesome-sass'
 gem 'payjp'
+gem 'dotenv-rails'
 
 group :production do
   gem 'unicorn', '5.4.1'

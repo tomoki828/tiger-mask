@@ -1,0 +1,47 @@
+= render "masks/header_mini"
+
+.order
+  .order__main
+    .order__main--text ORDER CONFIRMATION
+    - @user_carts.each do |user_cart|
+      .order__main__content
+        .order__main__content__left
+          .order__main__content__left--name #{user_cart[:name]}
+          = image_tag "#{user_cart[:image]}",size: "100x100", class: '.order__main__content__right--image'
+        .order__main__content__right
+          .order__main__content__right--price ¥#{user_cart[:price]}(税込)
+          .order__main__content__right--number #{user_cart[:quantity]}枚
+          .order__main__content__right--total ¥#{user_cart[:total_price]}(税込)
+  .order__footer
+    .order__footer__total
+      %p.order__footer__total--price
+        %span.order__footer__total--text 合計金額
+        ¥#{@total_price}
+      %p.order__footer__total--price
+        %span.order__footer__total--text 寄付金額
+        ¥#{@total_price/10}
+.buy__content.buy__user__info
+  .buy__content__inner
+    %h3 お支払い方法
+    - if Card.where(user: current_user).exists?
+      .card
+        .card__content
+          クレジットカード情報
+          .card__content__brand
+            = image_tag @card_src, class: "card__content__brand__img", alt: @card_brand
+        .card__content
+          .card__content__info
+            .card__content__info__number
+              = "**** **** **** " + @customer_card.last4
+            .card__content__info__expiration
+              .card__info__expiration__title
+                有効期限
+              .card__content__info__expiration__date
+                = @exp_month + " / " + @exp_year
+    - else
+      = link_to new_card_path, class: "user__info__text" do
+        %i.fa.fa-plus-circle こちらから登録して下さい
+.buy__content.buy__user__info
+  .buy__content.buy__item
+    - if Card.where(user: current_user).exists?
+      = link_to "購入を確定する", payment_carts_path, class: "btn-default"
