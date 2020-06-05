@@ -6,16 +6,13 @@ class CartsController < ApplicationController
   before_action :set_card,         only: [:purchase, :payment]
 
   def index
-    # @user_carts = uniq_merge(@user_carts, [:name, :user_id], [:quantity])
   end
 
   def add_item
-    if @cart_item.blank?
-      @cart_item = current_cart.cart_items.build(mask_id: params[:id])
-    end
     @cart_item.quantity += params[:number].to_i
     @cart_item.user_id = params[:user_id].to_i
     @cart_item.save
+    duplication_processing
     redirect_to carts_path
   end
 
@@ -27,8 +24,22 @@ class CartsController < ApplicationController
   def delete_item
     @cart = Cart.find(params[:id])
     @cart_item.destroy
-    @cart.destroy
     redirect_to carts_path
+  end
+
+  def duplication_processing
+    carts = Cart.all
+    carts_number = Cart.count
+    carts.first(carts_number - 1).each do |cart|
+      duplication_cart_item = cart.cart_items[0]
+      if duplication_cart_item[:mask_id] == params[:id].to_i && duplication_cart_item[:user_id] == params[:user_id].to_i
+          @cart_item.destroy
+          @duplication_cart_item = duplication_cart_item
+          @duplication_cart_item.quantity += params[:number].to_i
+          @duplication_cart_item.save
+          break
+      end
+    end
   end
 
   def purchase
@@ -79,7 +90,11 @@ class CartsController < ApplicationController
   private
     # 送られてきたidから現在のカートの中身を@cart_itemと定義するメソッド
     def set_cart_item!
-      @cart_item = current_cart.cart_items.find_by(mask_id: params[:id])
+      if @cart_item.blank?
+        @cart_item = current_cart.cart_items.build(mask_id: params[:id])
+      else
+        @cart_item = current_cart.cart_items.find_by(mask_id: params[:id])
+      end
     end
 
     def setup_cart_item!
@@ -113,12 +128,4 @@ class CartsController < ApplicationController
     def set_card
       @card = Card.find_by(user_id: current_user.id)
     end
-    # 重複データを処理するメソッド
-    # def uniq_merge(ary, keys = [], values = [])
-    #   ary.group_by { |i| keys.map { |key| i[key] } }
-    #      .map { |k, v|
-    #        v[1..-1].each { |x| values.each { |y| v[0][y] += x[y] } }
-    #        v[0]
-    #      }
-    # end
 end
