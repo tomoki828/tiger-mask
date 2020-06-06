@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   protect_from_forgery
   before_action :set_cart_item!,   only: :add_item
   before_action :setup_cart_item!, only: [:update_item, :delete_item]
-  before_action :set_user_carts,   only: [:index, :purchase]
+  before_action :set_user_carts,   only: [:index, :purchase, :payment]
   before_action :set_card,         only: [:purchase, :payment]
 
   def index
@@ -11,6 +11,7 @@ class CartsController < ApplicationController
   def add_item
     @cart_item.quantity += params[:number].to_i
     @cart_item.user_id = params[:user_id].to_i
+    @cart_item.status = params[:status]
     @cart_item.save
     duplication_processing
     redirect_to carts_path
@@ -32,11 +33,10 @@ class CartsController < ApplicationController
     carts_number = Cart.count
     carts.first(carts_number - 1).each do |cart|
       duplication_cart_item = cart.cart_items[0]
-      if duplication_cart_item[:mask_id] == params[:id].to_i && duplication_cart_item[:user_id] == params[:user_id].to_i
+      if duplication_cart_item[:status] == "cart" && duplication_cart_item[:mask_id] == params[:id].to_i && duplication_cart_item[:user_id] == params[:user_id].to_i
           @cart_item.destroy
-          @duplication_cart_item = duplication_cart_item
-          @duplication_cart_item.quantity += params[:number].to_i
-          @duplication_cart_item.save
+          duplication_cart_item.quantity += params[:number].to_i
+          duplication_cart_item.save
           break
       end
     end
@@ -73,18 +73,20 @@ class CartsController < ApplicationController
   end
 
   def payment
-    # unless @cart.situation == 0
-    #   @cart.situation = 0
-    #   @cart.save!
-    #   Payjp.api_key = Rails.application.secrets.payjp_access_key
-    #   charge = Payjp::Charge.create(
-    #   amount: @cart.price,
-    #   customer: Payjp::Customer.retrieve(@card.customer_id),
-    #   currency: 'jpy'
-    #   )
-    # else
-    #   redirect_to carts_path
-    # end
+    carts = Cart.all
+    carts.each do |cart|
+      cart_item = cart.cart_items[0]
+      if cart_item[:user_id] == current_user.id && cart_item[:status] == "cart"
+        cart_item[:status] = "sold"
+        cart_item.save!
+      end
+    end
+    Payjp.api_key = Rails.application.secrets.payjp_access_key
+    charge = Payjp::Charge.create(
+    amount: @total_price,
+    customer: Payjp::Customer.retrieve(@card.customer_id),
+    currency: 'jpy'
+    )
   end
 
   private
@@ -107,7 +109,7 @@ class CartsController < ApplicationController
       carts = Cart.all.order("created_at DESC")
       carts.each do |cart|
         cart.masks.zip(cart.cart_items).each do |m, c|
-          if current_user.id == c.user_id
+          if c.user_id == current_user.id && c.status == "cart"
             user_cart = {}
             user_cart[:name]  = m[:name]
             user_cart[:image] = m[:image]
@@ -115,6 +117,7 @@ class CartsController < ApplicationController
             user_cart[:quantity] = c.quantity
             user_cart[:cart_id] = c.cart_id
             user_cart[:user_id] = c.user_id
+            user_cart[:status] = c.status
             user_cart[:total_price] = user_cart[:price] * user_cart[:quantity]
             @user_carts << user_cart
           end

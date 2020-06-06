@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20200525224324) do
     t.integer  "mask_id"
     t.integer  "cart_id"
     t.integer  "user_id"
+    t.string   "status"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree

@@ -63,6 +63,7 @@ Association
 |mask_id|references|foreign_key: true|
 |cart_id|references|foreign_key: true|
 |user_id|integer||
+|status|string||
   
 Association
 - belongs_to :mask

@@ -39,7 +39,7 @@
               .card__content__info__expiration__date
                 = @exp_month + " / " + @exp_year
     - else
-      = link_to new_card_path, class: "user__info__text" do
+      = link_to users_path, class: "user__info__text" do
         %i.fa.fa-plus-circle こちらから登録して下さい
 .buy__content.buy__user__info
   .buy__content.buy__item
