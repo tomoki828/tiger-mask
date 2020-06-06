@@ -1,0 +1,10 @@
+= render "masks/header_mini"
+
+.user
+  .user__info
+  .user__info--address
+  .user__info--card
+    - if @card == nil
+      = render partial: 'cards/new'
+    - else
+      = render partial: 'cards/show'

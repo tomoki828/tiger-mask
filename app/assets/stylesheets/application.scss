@@ -1,6 +1,11 @@
 @import "reset";
+@import "modules/header";
 @import "modules/masks";
 @import "modules/carts";
+@import "modules/purchase";
+@import "modules/payment";
+@import "modules/users";
+@import "modules/cards";
 @import "modules/devise";
 @import "font-awesome-sprockets";
 @import "font-awesome";
