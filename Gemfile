@@ -55,10 +55,10 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
-gem 'pry-rails'
-gem 'font-awesome-sass'
 gem 'payjp'
 gem 'dotenv-rails'
+gem 'pry-rails'
+gem 'font-awesome-sass'
 
 group :production do
   gem 'unicorn', '5.4.1'
