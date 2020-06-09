@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     collection do
       get 'purchase'
       get 'payment'
+      get 'donation_logs'
     end
   end
 
