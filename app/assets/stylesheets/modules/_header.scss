@@ -148,6 +148,9 @@
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
       }
       &--aboutus {
         color: white;
@@ -155,6 +158,9 @@
         line-height: 50px;
         font-size: 16px;
         text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
   }

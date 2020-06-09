@@ -2,7 +2,7 @@ class CartsController < ApplicationController
   protect_from_forgery
   before_action :set_cart_item!,   only: :add_item
   before_action :setup_cart_item!, only: [:update_item, :delete_item]
-  before_action :set_user_carts,   only: [:index, :purchase, :payment]
+  before_action :set_carts,   only: [:index, :purchase, :payment, :donation_logs]
   before_action :set_card,         only: [:purchase, :payment]
 
   def index
@@ -89,6 +89,9 @@ class CartsController < ApplicationController
     )
   end
 
+  def donation_logs
+  end
+
   private
     # 送られてきたidから現在のカートの中身を@cart_itemと定義するメソッド
     def set_cart_item!
@@ -103,29 +106,33 @@ class CartsController < ApplicationController
       @cart_item = cart_info.cart_items.find_by(cart_id: params[:id])
     end 
 
-    def set_user_carts
+    def set_carts
       @user_carts  = []
       @total_price = 0
+      @total_donation = 0
       carts = Cart.all.order("created_at DESC")
-      carts.each do |cart|
-        cart.masks.zip(cart.cart_items).each do |m, c|
-          if c.user_id == current_user.id && c.status == "cart"
-            user_cart = {}
-            user_cart[:name]  = m[:name]
-            user_cart[:image] = m[:image]
-            user_cart[:price] = m[:price]
-            user_cart[:quantity] = c.quantity
-            user_cart[:cart_id] = c.cart_id
-            user_cart[:user_id] = c.user_id
-            user_cart[:status] = c.status
-            user_cart[:total_price] = user_cart[:price] * user_cart[:quantity]
-            @user_carts << user_cart
+        carts.each do |cart|
+          cart.masks.zip(cart.cart_items).each do |m, c|
+            if c.user_id == current_user.id && c.status == "cart"
+              user_cart = {}
+              user_cart[:name]  = m[:name]
+              user_cart[:image] = m[:image]
+              user_cart[:price] = m[:price]
+              user_cart[:quantity] = c.quantity
+              user_cart[:cart_id] = c.cart_id
+              user_cart[:user_id] = c.user_id
+              user_cart[:status] = c.status
+              user_cart[:total_price] = user_cart[:price] * user_cart[:quantity]
+              @user_carts << user_cart
+            end
+            if c.status == "sold"
+              @total_donation += m[:price] * c.quantity / 10
+            end
           end
         end
-      end
-      @user_carts.each do |user_cart|
-        @total_price += user_cart[:total_price]
-      end
+        @user_carts.each do |user_cart|
+          @total_price += user_cart[:total_price]
+        end
     end
 
     def set_card

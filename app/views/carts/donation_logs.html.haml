@@ -1,0 +1,10 @@
+= render "masks/header_mini"
+
+.payment
+  .payment__content
+    = image_tag "TigerMask.png", size: "238x304", alt: "TigerMask"
+  .payment__message 現在の寄付金の合計
+  .payment__message ¥#{@total_donation}
+  .payment__message 寄付金は日本の医療の未来のために活用させていただきます。
+  = link_to root_path,class: "link-blue" do
+    トップページに戻る

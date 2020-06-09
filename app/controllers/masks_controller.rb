@@ -8,10 +8,11 @@ class MasksController < ApplicationController
     @mask = Mask.find(params[:id])
   end
 
-  def set_header
-    @tiger   = Mask.find_by(id: 1)
-    @lion    = Mask.find_by(id: 2)
-    @cheetah = Mask.find_by(id: 3)
-    @cat     = Mask.find_by(id: 4)
-  end
+  private
+    def set_header
+      @tiger   = Mask.find_by(id: 1)
+      @lion    = Mask.find_by(id: 2)
+      @cheetah = Mask.find_by(id: 3)
+      @cat     = Mask.find_by(id: 4)
+    end
 end
