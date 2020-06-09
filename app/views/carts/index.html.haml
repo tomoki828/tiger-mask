@@ -26,3 +26,7 @@
           ¥#{@total_price/10}
       .cart__footer__link
         = link_to "購入画面に進む", purchase_carts_path, class: "cart__footer__link--text"
+  - else
+    %p.cart__footer--text カートに商品は入っていません。
+    .cart__footer__link
+      = link_to "ショッピングを続ける", root_path, class: "cart__footer__link--text"
