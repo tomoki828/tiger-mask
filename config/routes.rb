@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
   root "masks#index"
-  resources :masks, only: [:show]
   resources :users, only: [:index]
   resources :cards, only: [:new, :create, :show, :destroy]
-  
+
+  resources :masks, only: [:show] do
+    collection do
+      get 'about_us'
+    end
+  end
   resources :carts, only: [:index, :show] do
     collection do
       get 'purchase'

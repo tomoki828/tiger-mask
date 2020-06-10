@@ -1,0 +1,16 @@
+.donation {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 100px;
+  &__content {
+    margin-top: 100px;
+  }
+  &__message {
+    font-size: 30px;
+    margin: 20px 0;
+  }
+
+}
+.link-blue{
+  color: skyblue;
+}

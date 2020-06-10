@@ -1,11 +1,14 @@
 class MasksController < ApplicationController
-  before_action :set_header, only: [:index, :show]
+  before_action :set_header, only: [:index, :show, :about_us]
 
   def index
   end
 
   def show
     @mask = Mask.find(params[:id])
+  end
+
+  def about_us
   end
 
   private
