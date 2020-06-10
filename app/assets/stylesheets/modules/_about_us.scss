@@ -42,24 +42,44 @@
       }
     }
   }
-  // &__layer--1 {
-  //   display: block;
-  //   content: "";
-  //   position: absolute;
-  //   top: 0;
-  //   width: 200%;
-  //   height: 244%;
-  //   opacity: .6;
-  //   left: 0; 
-  //   background-color: black;
-  //   -webkit-transform: skewY(65deg) skewX(-21deg) translateX(-100%);
-  //   transform: skewY(65deg) skewX(-21deg) translateX(-100%);
-  //   transition: 1.5s all ease-in;
-  //   &.is-active {
-  //     -webkit-transform: skewY(65deg) skewX(-21deg) translateX(0);
-  //     transform: skewY(65deg) skewX(-21deg) translateX(0);
-  //   }
-  // }
+  &__front {
+    position: absolute;
+    left: 0;
+    top: 100px;
+    height: calc(100vh - 100px);
+    width: 100%;
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    z-index: 3;
+    opacity: 0;
+    & p {
+      margin-bottom: 20px;
+    }
+    & img {
+      margin-top: 20px;
+    }
+  }
+  &__layer--1 {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200%;
+    height: 244%;
+    opacity: .6;
+    left: 0; 
+    background-color: black;
+    -webkit-transform: skewY(65deg) skewX(-21deg) translateX(-100%);
+    transform: skewY(65deg) skewX(-21deg) translateX(-100%);
+    transition: 1.5s all ease-in;
+    &.is-active {
+      -webkit-transform: skewY(65deg) skewX(-21deg) translateX(0);
+      transform: skewY(65deg) skewX(-21deg) translateX(0);
+    }
+  }
   &__layer--2 {
     display: block;
     content: "";
