@@ -10,11 +10,11 @@
   display: flex;
   justify-content: space-between;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   &__title {
     display: flex;
     text-decoration: none;
-    z-index: 2;
+    z-index: 5;
     &__image {
     }
     &__text {

@@ -2,8 +2,10 @@ class CartsController < ApplicationController
   protect_from_forgery
   before_action :set_cart_item!,   only: :add_item
   before_action :setup_cart_item!, only: [:update_item, :delete_item]
-  before_action :set_carts,   only: [:index, :purchase, :payment, :donation_logs]
+  before_action :set_carts,        only: [:index, :purchase, :payment, :donation_logs]
   before_action :set_card,         only: [:purchase, :payment]
+  before_action :set_header,       only: [:donation_logs]
+
 
   def index
   end
@@ -137,5 +139,12 @@ class CartsController < ApplicationController
 
     def set_card
       @card = Card.find_by(user_id: current_user.id)
+    end
+
+    def set_header
+      @tiger   = Mask.find_by(id: 1)
+      @lion    = Mask.find_by(id: 2)
+      @cheetah = Mask.find_by(id: 3)
+      @cat     = Mask.find_by(id: 4)
     end
 end
