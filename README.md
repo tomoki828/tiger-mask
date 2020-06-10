@@ -39,6 +39,7 @@ Ruby, Ruby on rails, haml, sass, javascript, jquery
 ## 今後実装したい機能
 ・トップページの画像が一定時間で切り替わるように設定する。  
 ・ウィザード形式でのユーザーの配送先登録機能  
+・ABOUT USのレスポンシブデザイン  
 
 ## DB設計
 ### masksテーブル => 商品情報
